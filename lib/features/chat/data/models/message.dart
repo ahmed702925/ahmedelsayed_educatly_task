@@ -1,7 +1,29 @@
-// data/models/message_model.dart
-class MessageModel {
-  final String text;
-  final bool isSent;
+// message.dart
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-  MessageModel({required this.text, required this.isSent});
+class Message {
+  final String id;
+  final String senderId;
+  final String content;
+  final DateTime sentTime;
+
+  Message({required this.id, required this.senderId, required this.content, required this.sentTime});
+
+  factory Message.fromJson(Map<String, dynamic> json) {
+    return Message(
+      id: json['id'],
+      senderId: json['senderId'],
+      content: json['content'],
+      sentTime: (json['sentTime'] as Timestamp).toDate(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'senderId': senderId,
+      'content': content,
+      'sentTime': Timestamp.fromDate(sentTime),
+    };
+  }
 }

@@ -4,11 +4,13 @@ import '../widgets/chat_list.dart';
 import '../widgets/message_input_field.dart';
 
 class ChatPage extends StatelessWidget {
+  const ChatPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chat"),
+        title: const Text("Chat"),
       ),
       body: Column(
         children: [

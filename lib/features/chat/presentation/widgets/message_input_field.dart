@@ -1,11 +1,13 @@
+import 'package:ahmedelsayed_educatly_task/features/chat/domain/message_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/message_entity.dart';
 import '../bloc/chat_bloc.dart';
 import '../bloc/chat_event.dart';
 
 class MessageInputField extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
+
+  MessageInputField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,28 +25,35 @@ class MessageInputField extends StatelessWidget {
                 ),
               ),
               onSubmitted: (value) {
-                if (value.isNotEmpty) {
-                  // Create a new message entity
-                  final message = MessageEntity(text: value, isSent: true);
-                  // Dispatch the SendMessageEvent
-                  BlocProvider.of<ChatBloc>(context).add(SendMessageEvent(message));
-                  _controller.clear(); // Clear the input field
-                }
+                _sendMessage(value, context);
               },
             ),
           ),
           IconButton(
             icon: Icon(Icons.send),
             onPressed: () {
-              if (_controller.text.isNotEmpty) {
-                final message = MessageEntity(text: _controller.text, isSent: true);
-                BlocProvider.of<ChatBloc>(context).add(SendMessageEvent(message));
-                _controller.clear(); // Clear the input field
-              }
+              _sendMessage(_controller.text, context);
             },
           ),
         ],
       ),
     );
+  }
+
+  void _sendMessage(String messageText, BuildContext context) {
+    if (messageText.isNotEmpty) {
+      // Create a new message entity
+      final message = MessageEntity(
+        id: '', // Leave blank for Firestore to generate an ID
+        senderId: BlocProvider.of<ChatBloc>(context).currentUserId, // Get the current user ID
+        content: messageText,
+        sentTime: DateTime.now(),
+      );
+
+      // Dispatch the SendMessageEvent with the new message
+      BlocProvider.of<ChatBloc>(context).add(SendMessageEvent(message));
+
+      _controller.clear(); // Clear the input field
+    }
   }
 }

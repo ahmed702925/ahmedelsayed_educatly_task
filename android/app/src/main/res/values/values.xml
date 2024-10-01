@@ -1,0 +1,4 @@
+<!-- android/app/src/main/res/values/values.xml -->
+<resources>
+    <string name="project_id" translatable="false">educatlytask-8062e</string>
+</resources>
