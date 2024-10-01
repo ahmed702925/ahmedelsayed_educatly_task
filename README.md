@@ -57,85 +57,28 @@ lib/
 └── common/
     └── widgets/
         └── loading_indicator.dart    # Loading indicator for async operations
-Getting Started
-Prerequisites
-Flutter SDK: Install Flutter
-Firebase CLI: Install Firebase CLI
-A Firebase project with Firestore and Authentication enabled
-Setup Instructions
-Clone the repository:
+### Setup
 
-bash
-Copy code
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-Install Flutter dependencies:
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/your-repo-name.git
+    cd your-repo-name
+    ```
 
-bash
-Copy code
-flutter pub get
-Firebase Setup:
+2. **Install dependencies**:
+    ```bash
+    flutter pub get
+    ```
+    ## Usage
 
-Create a Firebase project in the Firebase Console.
-Enable Firestore and Firebase Authentication (Email/Password sign-in).
-Download the google-services.json file and place it in the android/app/ directory.
-Update android/build.gradle: Add the following line to the android/build.gradle file:
+1. **Run the app**:
+    ```bash
+    flutter run
+    ```
 
-gradle
-Copy code
-classpath 'com.google.gms:google-services:4.3.10'
-Update android/app/build.gradle: Add the following lines to the android/app/build.gradle file:
+2. **Sign up** with email/password and start sending messages in real-time.
 
-gradle
-Copy code
-apply plugin: 'com.google.gms.google-services'
+## BLoC Architecture
 
-dependencies {
-    implementation 'com.google.firebase:firebase-auth-ktx'
-    implementation 'com.google.firebase:firebase-firestore-ktx'
-}
-Usage
-Running the App
-Run the app on your Android or iOS device:
-
-bash
-Copy code
-flutter run
-Sign up with an email and password, and you will be directed to the chat screen.
-
-Send and receive messages in real time with other authenticated users.
-
-Firebase Setup
-Enable Firebase Authentication:
-
-Go to the Firebase Console > Authentication > Sign-in method.
-Enable Email/Password authentication.
-Enable Firestore:
-
-Go to the Firebase Console > Firestore Database.
-Set Firestore to Test Mode during development.
-Add google-services.json:
-
-Download the google-services.json file from Firebase and place it under android/app/.
-BLoC Architecture
-The app uses the BLoC (Business Logic Component) pattern to separate the presentation layer from the business logic.
-Events: Events like SendMessageEvent are dispatched when a user sends a message.
-States: States like ChatLoaded contain the list of messages retrieved from Firestore.
-Example BLoC Code:
-dart
-Copy code
-class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  final SendMessageUseCase sendMessageUseCase;
-
-  ChatBloc(this.sendMessageUseCase) : super(ChatInitial()) {
-    on<SendMessageEvent>((event, emit) async {
-      await sendMessageUseCase.sendMessage(event.message.content);
-      emit(ChatLoaded(messages: []));  // Add real message fetching logic
-    });
-  }
-}
-Testing
-Test the app on an emulator or physical device with internet access.
-Use Firebase Authentication to sign up/log in and test the chat functionality.
-Ensure real-time updates for chat messages by testing with multiple devices.
-
+- Events like `SendMessageEvent` are dispatched when a user sends a message.
+- States like `ChatLoaded` handle the list of messages.
