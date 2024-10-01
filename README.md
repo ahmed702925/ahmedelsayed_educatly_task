@@ -22,7 +22,7 @@ This project implements a real-time chat application using **Flutter**, **Fireba
 ---
 
 ## Project Structure
-
+```plaintext
 The project follow the below example clean structure:
 lib/
 │
