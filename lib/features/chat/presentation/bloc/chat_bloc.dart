@@ -1,19 +1,17 @@
-// presentation/bloc/chat_bloc.dart
+import 'package:ahmedelsayed_educatly_task/features/chat/domain/usecases/send_message_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'chat_event.dart';
+import '../../domain/message_entity.dart';
 import 'chat_state.dart';
-import '../../domain/usecases/send_message_usecase.dart';
+import 'chat_event.dart'; // Import the ChatEvent class
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  final SendMessageUseCase sendMessageUseCase;
+  List<MessageEntity> _messages = []; // Private list to hold messages
 
-  ChatBloc(this.sendMessageUseCase) : super(ChatInitial());
-
-  Stream<ChatState> mapEventToState(ChatEvent event) async* {
-    if (event is SendMessage) {
-      sendMessageUseCase.sendMessage(event.message);
-      final messages = sendMessageUseCase.getMessages();
-      yield ChatLoaded(messages);
-    }
+  ChatBloc(SendMessageUseCase sendMessageUseCase) : super(ChatInitial()) {
+    // Register event handlers
+    on<SendMessageEvent>((event, emit) {
+      _messages.add(event.message); // Add the new message to the list
+      emit(ChatLoaded(messages: _messages)); // Emit a loaded state with messages
+    });
   }
 }

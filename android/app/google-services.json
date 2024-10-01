@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "744471202381",
+    "project_id": "educatlytask-8062e",
+    "storage_bucket": "educatlytask-8062e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744471202381:android:373a699fdd00634bf3aa04",
+        "android_client_info": {
+          "package_name": "com.example.ahmedelsayed_educatly_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKw5wP0xR0eMMXyEp-v8QP5G4egKAgXCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
