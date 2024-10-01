@@ -7,15 +7,9 @@ This project implements a real-time chat application using **Flutter**, **Fireba
 ## Table of Contents
 - [Features](#features)
 - [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Setup Instructions](#setup-instructions)
+- [Setup](#setup)
 - [Usage](#usage)
-- [Firebase Setup](#firebase-setup)
 - [BLoC Architecture](#bloc-architecture)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -29,7 +23,7 @@ This project implements a real-time chat application using **Flutter**, **Fireba
 
 ## Project Structure
 
-```plaintext
+The project follow the below example clean structure:
 lib/
 │
 ├── main.dart                          # Application entry point
@@ -52,12 +46,10 @@ lib/
 │       │       └── send_message_usecase.dart  # Use case for sending messages
 │       │
 │       └── data/
-│           └── firebase_chat_repository.dart  # Firebase repository for Firestore operations
-│
-└── common/
-    └── widgets/
-        └── loading_indicator.dart    # Loading indicator for async operations
-### Setup
+│           └── firebase_chat_repository.dart  # Firebase repository for Firestore    
+
+
+## Setup
 
 1. **Clone the repository**:
     ```bash
@@ -69,7 +61,7 @@ lib/
     ```bash
     flutter pub get
     ```
-    ## Usage
+## Usage
 
 1. **Run the app**:
     ```bash
