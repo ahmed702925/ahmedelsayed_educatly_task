@@ -22,8 +22,8 @@ This project implements a real-time chat application using **Flutter**, **Fireba
 ---
 
 ## Project Structure
-```plaintext
 The project follow the below example clean structure:
+
 lib/
 │
 ├── main.dart                          # Application entry point
@@ -47,7 +47,6 @@ lib/
 │       │
 │       └── data/
 │           └── firebase_chat_repository.dart  # Firebase repository for Firestore    
-
 
 ## Setup
 
